@@ -23,6 +23,8 @@ gem "phlex-rails", "~> 2.4"
 gem "neighbor", "~> 1.2"
 # Local ONNX embeddings, all-MiniLM-L6-v2 (ADR 005)
 gem "informers", "~> 1.3"
+# Markdown to HTML for the Draft leaf only (ADR 009)
+gem "commonmarker", "~> 2.10"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

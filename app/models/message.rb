@@ -6,11 +6,13 @@ class Message < ApplicationRecord
 
   belongs_to :thread, class_name: "ChatThread", inverse_of: :messages
   belongs_to :answer, optional: true
+  belongs_to :post, optional: true
 
   validates :role, inclusion: { in: ROLES }
   validates :body, presence: true, unless: :failure?
 
   def failure? = failure_code.present?
+  def draft? = post_id.present?
   def user? = role == "user"
   def assistant? = role == "assistant"
 

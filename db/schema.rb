@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_30_150000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_170000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -38,7 +38,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_150000) do
     t.datetime "created_at", null: false
     t.string "status", default: "open", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "status::text = ANY (ARRAY['open'::character varying, 'closed'::character varying]::text[])", name: "chat_threads_status_check"
+    t.check_constraint "status::text = ANY (ARRAY['open'::character varying::text, 'closed'::character varying::text])", name: "chat_threads_status_check"
   end
 
   create_table "chunks", force: :cascade do |t|
@@ -78,13 +78,42 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_150000) do
     t.datetime "created_at", null: false
     t.string "failure_code"
     t.string "failure_message"
+    t.bigint "post_id"
     t.string "role", null: false
     t.bigint "thread_id", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_messages_on_answer_id"
+    t.index ["post_id"], name: "index_messages_on_post_id"
     t.index ["thread_id"], name: "index_messages_on_thread_id"
     t.check_constraint "body IS NOT NULL OR failure_code IS NOT NULL", name: "messages_body_or_failure_check"
-    t.check_constraint "role::text = ANY (ARRAY['user'::character varying, 'assistant'::character varying]::text[])", name: "messages_role_check"
+    t.check_constraint "role::text = ANY (ARRAY['user'::character varying::text, 'assistant'::character varying::text])", name: "messages_role_check"
+  end
+
+  create_table "post_sources", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "document_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_post_sources_on_document_id"
+    t.index ["post_id", "document_id"], name: "index_post_sources_on_post_id_and_document_id", unique: true
+    t.index ["post_id"], name: "index_post_sources_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "angle"
+    t.datetime "created_at", null: false
+    t.text "draft"
+    t.text "payoff_or_cost"
+    t.string "published_path"
+    t.integer "retrieved_chunk_ids", default: [], null: false, array: true
+    t.string "slug", null: false
+    t.string "status", default: "seed", null: false
+    t.text "tension"
+    t.bigint "thread_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["thread_id"], name: "index_posts_on_thread_id"
+    t.check_constraint "status::text = ANY (ARRAY['seed'::character varying, 'drafting'::character varying, 'approved'::character varying, 'published'::character varying]::text[])", name: "posts_status_check"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -98,4 +127,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_150000) do
   add_foreign_key "documents", "projects"
   add_foreign_key "messages", "answers"
   add_foreign_key "messages", "chat_threads", column: "thread_id"
+  add_foreign_key "messages", "posts"
+  add_foreign_key "post_sources", "documents"
+  add_foreign_key "post_sources", "posts"
+  add_foreign_key "posts", "chat_threads", column: "thread_id"
 end

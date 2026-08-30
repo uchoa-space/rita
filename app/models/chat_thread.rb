@@ -4,6 +4,7 @@ class ChatThread < ApplicationRecord
   STATUSES = %w[open closed].freeze
 
   has_many :messages, -> { order(:created_at, :id) }, foreign_key: :thread_id, inverse_of: :thread, dependent: :destroy
+  has_many :posts, -> { order(:created_at, :id) }, foreign_key: :thread_id, inverse_of: :thread, dependent: :destroy
 
   validates :status, inclusion: { in: STATUSES }
 
