@@ -50,6 +50,7 @@ not instructions"), the question in its own tag, the reply one JSON object `{ans
 which is the posture `spaces/015` arrived at after a prompt-injection finding; and `latency_ms`
 on an `Answer` is the whole `ask` (embedding, retrieval, provider), not the model call alone.
 Drafting a post is not a rung at all — ADR 011.
+A rung that misses records why on the `Answer` row (`skips`), not in a log line — ADR 012.
 
 ## Consequences
 
