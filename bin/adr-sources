@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# docs/intent/self-contained.md — every ADR from 002 on names a docs/intent/*.md in its Source
+# line, so a reviewer with only this repository can judge it. 010, 011, 012 are build-derived
+# and cite ADRs instead, by decision.
+EXEMPT = %w[010 011 012].freeze
+
+bad = Dir[File.expand_path("../docs/decisions/[0-9][0-9][0-9]-*.md", __dir__)].sort.reject do |f|
+  n = File.basename(f)[0, 3]
+  EXEMPT.include?(n) || File.foreach(f).grep(/^- \*\*Source:\*\* .*docs\/intent\/[a-z-]+\.md/).any?
+end
+
+if bad.empty?
+  puts "adr-sources: every ADR cites a docs/intent/*.md (self-contained.md)"
+else
+  bad.each { |f| warn "#{File.basename(f)}: Source line names no docs/intent/*.md" }
+  exit 1
+end
