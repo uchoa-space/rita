@@ -41,27 +41,18 @@ up, and what the empty and failed states are.
 - **Obligations.** Thread is `role="log"` `aria-live="polite"`; every message named by its role;
   composer labelled; focus returns to the composer after send; roles never told apart by colour
   alone; every action keyboard-reachable; 44px targets on the phone shape.
+- **Stateless per turn.** `Say` hands the ladder the current text and nothing else; rung, USD
+  and latency ride on the assistant message as a `meta` part. Refining a draft is `Post::Refine`
+  with the thread as context (ADR 011), not a chat property; `Refine` is free text, not a button.
+- **Streaming for slice 1** is the Turbo Stream response to `Say`'s POST, the frame busy for the
+  whole ladder; a broadcast enters at `ViewResolver.changes_after` when a job does (ADR 013).
+- **Names the build settled.** `::Thread` is Ruby core, so the model is `ChatThread` (the header
+  entity stays `thread:`); `Command Open` exists because `thread: :open` must be produced by
+  something (`rita:verify`) and the empty state needs a keyword-less command; `Sources` is its
+  own leaf and typing is the `Thread`'s busy state — the Figma prototype drew both as `Message`
+  variants, and `docs/figma.yml` records the difference.
 - **Slice 1 is `chat` alone.** `board`, `list`/`detail`, `report` wait until the conversation has
   produced a real draft.
-
-## Decided on the way (2026-08-30, from the build and the Figma prototype)
-
-- Rung, USD and latency are a `meta` part of the assistant's `Message` — per-answer traceability
-  (intent § success 4) lives on the chat surface, not only on the Costs `report`.
-- `Refine` is free text in the composer; a button for it is sugar the Figma prototype drew and
-  the code does not need.
-- Before a `Post` header exists the sidebar section shows dashes and one sentence, never hides.
-- `Sources` is its own leaf in code (Figma drew it as a `Message` part); typing is the `Thread`'s
-  busy state in code (Figma drew it as a `Message` variant). The Figma sidecar records both.
-- `::Thread` is Ruby core, so the model is `ChatThread`; the header entity stays `thread:`.
-- `Command Open` exists: without it `thread: :open` was a status nothing produced (`rita:verify`)
-  and the empty state had no keyword-less command to offer.
-- The chat is stateless per turn: `Say` hands the ladder the current text and nothing else.
-  Refining a draft is `Post::Refine` with the thread as context (ADR 011), not a chat property.
-- Streaming for slice 1 is the Turbo Stream response to `Say`'s POST (two appends), the frame busy
-  for the whole ladder; a Solid Cable broadcast enters at `ViewResolver.changes_after` when a job
-  does. Not validated in a browser by the suite; the Lighthouse pass of ADR 013/016 is where it is
-  seen.
 
 ## Consequences
 

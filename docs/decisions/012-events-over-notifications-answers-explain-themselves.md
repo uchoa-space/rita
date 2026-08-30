@@ -22,7 +22,7 @@ never built there.
    that missed, `reason` from a closed set: `nothing_retrieved`, `below_tau`, `missing_key`,
    `provider_failed`, `malformed`, `empty`, `invented_citation`. `rungs_tried` stays. The
    prose warning goes.
-2. **Events, not log lines.** Five events over `ActiveSupport::Notifications`, payload keys only,
+2. **Events, not log lines.** Four events over `ActiveSupport::Notifications`, payload keys only,
    never an argument value or free text:
 
    | Event | Payload keys |
@@ -31,7 +31,6 @@ never built there.
    | `rita.postcondition_failed` | `key`, `entity`, `declared`, `found`, `request_id` — `error` level: a header that lied |
    | `rita.ladder.rung` | `rung`, `outcome` (landed / skipped), `reason`, `model`, `duration_ms`, `cost_usd`, `request_id` |
    | `rita.drafter` | `post_id` hashed, `outcome`, `model`, `duration_ms`, `cost_usd`, `request_id` (ADR 011) |
-   | `rita.corpus.ingest` | `projects`, `documents_changed`, `chunks`, `knowledge_version`, `duration_ms` |
 
    `request_id` is `request.request_id` from the dispatcher, otherwise minted per run and passed
    explicitly, never via a global. One subscriber, `Rita::Instrumentation::LogSubscriber`, JSON
@@ -48,7 +47,7 @@ never built there.
 
 - Intent § success 4 ("full cost and latency traceability per answer") becomes a query, and a
   handoff becomes explainable from the row that recorded it.
-- OpenTelemetry or Prometheus, should either ever matter, subscribe to the same five events;
+- OpenTelemetry or Prometheus, should either ever matter, subscribe to the same four events;
   nothing here is written for a vendor.
 - Bad: one more column, one subscriber, one boot check to keep true — and a rule (no value in a
   payload) that only review enforces.

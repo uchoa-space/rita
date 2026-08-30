@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** test review of ADR 003, 004, 005, 009, 010, 013, 015; `adr-harvest/cuy/0007` (HTML strings, no browser), `cuy/0016` (docs-claims test), `spaces/003` (recorded fixtures), `spaces/008` (suite runs with no keys), `spaces/009` (one process); `freeze/cuy/docs/use-cases.md` on `Cuy::Seed.plan` ("arrange and act cannot drift apart, because they are the same call"), consulted per ADR 001
+- **Source:** test review of ADR 003, 004, 005, 009, 010, 013, 015; `adr-harvest/cuy/0007` (HTML strings, no browser), `spaces/003` (recorded fixtures), `spaces/008` (suite runs with no keys), `spaces/009` (one process); `freeze/cuy/docs/use-cases.md` on `Cuy::Seed.plan` ("arrange and act cannot drift apart, because they are the same call"), consulted per ADR 001
 
 ## Context
 
@@ -46,9 +46,7 @@ JSON we wrote ourselves. Until a live call happens the scripted fakes stand and 
 in `docs/perf.md` — and it also confirms `turbo-frame[busy]` shows the typing state. No Capybara,
 no Selenium, no headless driver in the Gemfile.
 
-**No counts in prose.** An ADR or README quotes a sha, never a run count; the two that did
-(ADR 010) are corrected. If a count must be written, `test/docs_claims_test.rb` pins it
-(`cuy/0016`).
+**No counts in prose.** An ADR or README quotes a sha, never a run count.
 
 ## Consequences
 
