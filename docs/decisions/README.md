@@ -10,3 +10,6 @@
 | [005](005-the-cost-ladder-replicated-from-spaces.md) | The cost ladder, replicated from `spaces` with three named adaptations |
 | [006](006-post-header-derives-the-article.md) | The `Post` header derives the article; MDX is written into `uchoa-space` only on approval |
 | [007](007-errors-as-values.md) | Errors as values — no exception crosses a layer boundary to signal a domain outcome |
+| [008](008-plain-theme-first-kit-as-a-directory.md) | A plain, classless theme first; a kit is a directory that may come later |
+| [009](009-the-chat-screen.md) | The `chat` screen — one column first, server-first streaming, the draft is a message |
+| [010](010-kernel-decisions-where-the-adrs-were-thin.md) | Kernel decisions taken where the `cuy` ADRs were thin |
