@@ -35,7 +35,7 @@ jobs:
 
       # ADR 019: key by model id once the embedder lands; until then the lock is the id.
       - name: Cache embedder model
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/informers
           key: informers-${{ hashFiles('Gemfile.lock') }}
