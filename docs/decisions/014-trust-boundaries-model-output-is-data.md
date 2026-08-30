@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** threat model over ADR 000–013 (STRIDE per boundary, OWASP LLM Top 10 2025); `spaces/015` (the citation rule came from a prompt-injection finding), `spaces/001`, `spaces/004`; the blog's `page.mdx` shape (`import … from '@/components/ArticleLayout'`, `export const article`), verified 2026-08-30
+- **Source:** `docs/intent/trust.md`; threat model over ADR 000–013 (STRIDE per boundary, OWASP LLM Top 10 2025); `spaces/015` (the citation rule came from a prompt-injection finding), `spaces/001`, `spaces/004`; the blog's `page.mdx` shape (`import … from '@/components/ArticleLayout'`, `export const article`), verified 2026-08-30
 
 ## Context
 

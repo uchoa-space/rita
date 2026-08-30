@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** `adr-harvest/spaces/001, 002, 004, 005, 007, 008, 011, 014, 015`; `docs/intent/rita.md` § 2.4
+- **Source:** `docs/intent/cost-ladder.md`; `adr-harvest/spaces/001, 002, 004, 005, 007, 008, 011, 014, 015`; `docs/intent/rita.md` § 2.4
 
 ## Context
 

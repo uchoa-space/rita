@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** `adr-harvest/cuy/0004`, `cuy/0013`; `freeze/cuy/docs/intent/chat.md` (draft, never interviewed); `docs/intent/rita.md` § 2.2
+- **Source:** `docs/intent/derived-screens.md`; `adr-harvest/cuy/0004`, `cuy/0013`; `freeze/cuy/docs/intent/chat.md` (draft, never interviewed); `docs/intent/rita.md` § 2.2
 
 ## Context
 

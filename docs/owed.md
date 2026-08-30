@@ -20,6 +20,7 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | Dependency-rule test: `lib/rita/**` never references `app/` or `Chat::`/`Post::` | 019 | the test exists and passes |
 | Remove `capybara`, `selenium-webdriver`, `image_processing`, `kamal`, `thruster`, `tailwindcss-rails` — one change each | 019 | Gemfile carries only what an ADR asks for |
 | Mark pre-017 provisional code (`test/support/journal.rb`; drop the stopped Post stream's stash) | 017, 019 | markers present, stash gone |
+| First review by bones cites no path under `adr-harvest/`, `freeze/`, `spaces/` | intent self-contained | the review file or PR review reads clean |
 | `bin/ci` (audit, importmap audit, brakeman, rubocop, test) printing the ADR per step | 020 | the script exists and reviews cite it |
 | `.github/workflows/ci.yml` calls `bin/ci` only: pgvector image, informers cache, no system-test job, no libvips | 020 | the file matches; runs once a remote exists |
 | Three GitHub Apps (`scotty`, `bones`, `kirk`) on `uchoa-space`, keys held by the Admiral | 021 | `gh api app` answers for each — **Admiral's gate** |

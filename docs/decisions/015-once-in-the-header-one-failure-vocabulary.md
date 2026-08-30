@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** interface review of ADR 002, 006, 007, 010, 011, 013, 014; `adr-harvest/cuy/0014` (names `once:` as a header word a re-runnable command might earn); the derived routes in `rita:explain` (`POST /chat/threads/:thread_id/say`)
+- **Source:** `docs/intent/errors-as-values.md`; interface review of ADR 002, 006, 007, 010, 011, 013, 014; `adr-harvest/cuy/0014` (names `once:` as a header word a re-runnable command might earn); the derived routes in `rita:explain` (`POST /chat/threads/:thread_id/say`)
 
 ## Context
 

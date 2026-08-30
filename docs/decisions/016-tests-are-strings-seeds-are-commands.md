@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** test review of ADR 003, 004, 005, 009, 010, 013, 015; `adr-harvest/cuy/0007` (HTML strings, no browser), `spaces/003` (recorded fixtures), `spaces/008` (suite runs with no keys), `spaces/009` (one process); `freeze/cuy/docs/use-cases.md` on `Cuy::Seed.plan` ("arrange and act cannot drift apart, because they are the same call"), consulted per ADR 001
+- **Source:** `docs/intent/derived-screens.md`; test review of ADR 003, 004, 005, 009, 010, 013, 015; `adr-harvest/cuy/0007` (HTML strings, no browser), `spaces/003` (recorded fixtures), `spaces/008` (suite runs with no keys), `spaces/009` (one process); `freeze/cuy/docs/use-cases.md` on `Cuy::Seed.plan` ("arrange and act cannot drift apart, because they are the same call"), consulted per ADR 001
 
 ## Context
 

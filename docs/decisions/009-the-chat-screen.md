@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** ADR 003, 004, 007; `freeze/cuy/docs/intent/chat.md` (draft, consulted per ADR 001); `freeze/cuy/docs/screens.md` § Accessibility, Responsive; `docs/intent/rita.md` § 2.2
+- **Source:** `docs/intent/derived-screens.md`; ADR 003, 004, 007; `freeze/cuy/docs/intent/chat.md` (draft, consulted per ADR 001); `freeze/cuy/docs/screens.md` § Accessibility, Responsive; `docs/intent/rita.md` § 2.2
 
 ## Context
 

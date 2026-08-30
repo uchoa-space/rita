@@ -1,6 +1,6 @@
 # rita — agent contract (ADR 018)
 
-Read in this order before changing anything: `docs/intent/rita.md`, `docs/decisions/README.md`
+Read in this order before changing anything: `docs/intent/rita.md`, then the belief intents in `docs/intent/` (`self-contained.md` explains them), `docs/decisions/README.md`
 (then the ADRs your change touches), `docs/screens.md`, `docs/owed.md`.
 
 ## Rules you will otherwise break

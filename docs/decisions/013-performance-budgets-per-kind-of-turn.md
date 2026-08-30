@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** review of ADR 000–012 and `docs/intent/rita.md` against the performance skill; `spaces/002` ("an HNSW index is one migration away"), `spaces/004` (embedder cold load, eager in production only), `spaces/009`, `cuy/0015` (webperf as a boot rule); one measurement taken 2026-08-30 before the review: retrieval over 2,561 chunks by seq scan + top-N heapsort in ~3 ms, one embedding in ~1 ms
+- **Source:** `docs/intent/cost-ladder.md`; review of ADR 000–012 and `docs/intent/rita.md` against the performance skill; `spaces/002` ("an HNSW index is one migration away"), `spaces/004` (embedder cold load, eager in production only), `spaces/009`, `cuy/0015` (webperf as a boot rule); one measurement taken 2026-08-30 before the review: retrieval over 2,561 chunks by seq scan + top-N heapsort in ~3 ms, one embedding in ~1 ms
 
 ## Context
 

@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** `adr-harvest/cuy/0003`, `cuy/0005`, `cuy-kit-tailwind/0001`, `zep/0010`; `docs/intent/rita.md` § 2.1
+- **Source:** `docs/intent/derived-screens.md`; `adr-harvest/cuy/0003`, `cuy/0005`, `cuy-kit-tailwind/0001`, `zep/0010`; `docs/intent/rita.md` § 2.1
 
 ## Context
 

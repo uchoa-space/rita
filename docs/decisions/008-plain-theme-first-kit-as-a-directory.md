@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** `adr-harvest/cuy/0005`, `cuy/0015`, `cuy-kit-tailwind/0001`; `freeze/cuy/docs/screens.md` § Theme (consulted per ADR 001); `docs/intent/rita.md` § 2.2
+- **Source:** `docs/intent/derived-screens.md`; `adr-harvest/cuy/0005`, `cuy/0015`, `cuy-kit-tailwind/0001`; `freeze/cuy/docs/screens.md` § Theme (consulted per ADR 001); `docs/intent/rita.md` § 2.2
 
 ## Context
 

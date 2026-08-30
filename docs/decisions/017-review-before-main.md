@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** the build day — streams A, B, C and E committed ~4,000 lines to `main` with no review, only reconciliation; `adr-harvest/spaces/010` (commits on `main` until a remote exists), `spaces/013` (one account: review is a discipline on record, not a switch); the author's global review conventions (Conventional Comments; the author replies, the reviewer closes; a review body is Verdict / Checked / Findings)
+- **Source:** `docs/intent/crew.md`; the build day — streams A, B, C and E committed ~4,000 lines to `main` with no review, only reconciliation; `adr-harvest/spaces/010` (commits on `main` until a remote exists), `spaces/013` (one account: review is a discipline on record, not a switch); the author's global review conventions (Conventional Comments; the author replies, the reviewer closes; a review body is Verdict / Checked / Findings)
 
 ## Context
 

@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** ADR 002 (the header is the spec), 015 (no JSON surface), 017 (the two mandatory comments); `spaces/000` ("the README stays a description of what runs, not an argument"); `lib/rita/result.rb` (comment style already in use)
+- **Source:** `docs/intent/derived-screens.md`; ADR 002 (the header is the spec), 015 (no JSON surface), 017 (the two mandatory comments); `spaces/000` ("the README stays a description of what runs, not an argument"); `lib/rita/result.rb` (comment style already in use)
 
 ## Context
 

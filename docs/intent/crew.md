@@ -25,3 +25,43 @@
   Admiral's: created by hand, exported in the shell, never in a repository.
 - **Out of scope:** Actions waking agents on labels or comments; spock and uhura; Forgejo;
   auto-merge without kirk's approval; bones approving anything.
+
+## The rule above the identities: how work enters `main`
+
+> Added 2026-08-30 (`self-contained.md`). Downstream: ADR 017, 020, 021.
+
+- **Outcome:** nothing lands on `main` unreviewed, and the reviewer is a different model than the
+  author. One script, `bin/ci`, is what "green" means — locally now, the same steps in Actions
+  once a remote exists. There is no CD: deploy is out of scope (`rita.md` § 5), so a pipeline
+  after green would automate nothing. A change is one use case, around 300 lines; provisional code
+  carries the ADR that owns it and the event that removes it; every debt an ADR admits has one
+  home, `docs/owed.md`.
+- **Why now:** the first build day put ~4,000 lines on `main` through four agent streams with no
+  review, only reconciliation. Seventeen decisions said what good code is and none said who
+  checks.
+- **Success:** the first `request changes` that catches a tension an ADR named before it lands;
+  a review whose Checked section names what it did not check; `bin/ci` printing the ADR beside
+  each step.
+- **Constraint:** the author replies, the reviewer closes, never the reverse; a review with zero
+  `issue` on 300 lines is a finding about the reviewer; "tests pass" alone is a request for
+  changes.
+
+### Why I believe this
+
+- **One account cannot satisfy its own review rule, and a rule satisfied only by bypass
+  misrepresents the process.** The predecessor project recorded exactly this: GitHub does not let
+  a PR's author approve it, so a required-review setting would be opened by hand every merge; it
+  chose to drop the setting and keep the discipline on record rather than lie on the settings
+  page (`spaces/013`). Apps are the first identity the platform enforces for a persona.
+- **A mechanical gate rejected 63 of 69 completion claims in one run, and 7 of 8 in another**
+  (`enterprise/0007`, from `groq-harness/0003`). A human reviewing sixty-three false claims in a
+  row catches the early ones. That is why the human is the last rung of review and reads the
+  review, not the diff.
+- **The crew was designed on a self-hosted forge and never ran a single dispatch.** The forge
+  outlived its own compose file, restored private keys onto disk on reboot, and was torn down
+  (`enterprise/0006`). What survived is the design — a persona is who performed the action,
+  recorded where the platform records performers — and the lesson that the bus must be one the
+  author does not operate.
+- **Whether another model reviewing catches what the same model misses is unmeasured.** The
+  blind spots may be shared across models trained alike. The bet is stated in ADR 017's
+  Tension to watch; the first review is the test.

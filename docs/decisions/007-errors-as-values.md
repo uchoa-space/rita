@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** the `wise` lineage in `adr-harvest`: `clocky/0002` (origin, 2026-07-23, `Result = Data.define(:value, :error)` replacing five `raise` sites), `inventario/0001` (the rule as stated in the title, 2026-07-26), `clockyy/0002` (`deconstruct_keys`), `bench/0007`, `labs-wise/0003`, `enterprise/0005` (the same move applied to process); `freeze/cuy/docs/use-cases.md` and `lib/cuy/result.rb` (`ok(**data)` / `failure(code, message:, **data)`, consulted per ADR 001 — no `adr-harvest/cuy/` record covers it); `adr-harvest/spaces/007`
+- **Source:** `docs/intent/errors-as-values.md`; the `wise` lineage in `adr-harvest`: `clocky/0002` (origin, 2026-07-23, `Result = Data.define(:value, :error)` replacing five `raise` sites), `inventario/0001` (the rule as stated in the title, 2026-07-26), `clockyy/0002` (`deconstruct_keys`), `bench/0007`, `labs-wise/0003`, `enterprise/0005` (the same move applied to process); `freeze/cuy/docs/use-cases.md` and `lib/cuy/result.rb` (`ok(**data)` / `failure(code, message:, **data)`, consulted per ADR 001 — no `adr-harvest/cuy/` record covers it); `adr-harvest/spaces/007`
 
 ## Context
 

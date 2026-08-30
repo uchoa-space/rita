@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** `adr-harvest/cuy/0002`, `cuy/0006`, `cuy/0014` (Proposed); `docs/intent/rita.md` § 2.1
+- **Source:** `docs/intent/derived-screens.md`; `adr-harvest/cuy/0002`, `cuy/0006`, `cuy/0014` (Proposed); `docs/intent/rita.md` § 2.1
 
 ## Context
 

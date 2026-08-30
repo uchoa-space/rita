@@ -17,15 +17,6 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 
-# Views as Phlex components from a closed leaf vocabulary (ADR 004)
-gem "phlex-rails", "~> 2.4"
-# pgvector nearest-neighbor queries for the semantic cache (ADR 005)
-gem "neighbor", "~> 1.2"
-# Local ONNX embeddings, all-MiniLM-L6-v2 (ADR 005)
-gem "informers", "~> 1.3"
-# Markdown to HTML for the Draft leaf only (ADR 009)
-gem "commonmarker", "~> 2.10"
-
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 

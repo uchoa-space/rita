@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
-- **Source:** deprecation review of ADR 001, 005, 006, 008, 012, 013, 016; `spaces/004` (one embedding model), `spaces/011` (a vendor retired the rung-2 ids mid-build), `inventario/0003` (a dependency-rule test); the `Gemfile` as left by `rails new`
+- **Source:** `docs/intent/trust.md`; deprecation review of ADR 001, 005, 006, 008, 012, 013, 016; `spaces/004` (one embedding model), `spaces/011` (a vendor retired the rung-2 ids mid-build), `inventario/0003` (a dependency-rule test); the `Gemfile` as left by `rails new`
 
 ## Context
 
