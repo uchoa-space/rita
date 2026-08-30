@@ -9,3 +9,4 @@
 | [004](004-closed-phlex-vocabulary-theme-owns-css.md) | A closed Phlex vocabulary; the theme owns the CSS |
 | [005](005-the-cost-ladder-replicated-from-spaces.md) | The cost ladder, replicated from `spaces` unchanged |
 | [006](006-post-header-derives-the-article.md) | The `Post` header derives the article; MDX is written into `uchoa-space` only on approval |
+| [007](007-errors-as-values.md) | A use case returns a `Result`; domain failures are values, not exceptions |
