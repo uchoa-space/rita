@@ -37,12 +37,21 @@ module Rita
       assert_equal :handoff, Result.failure("handoff").code
     end
 
-    test "instances and their data are frozen" do
-      result = Result.ok(dish: "soup")
+    test "a code that cannot be a symbol is a DefinitionError" do
+      assert_raises(DefinitionError) { Result.failure(nil) }
+      assert_raises(DefinitionError) { Result.failure(42) }
+    end
+
+    test "instances and their data are deep-frozen" do
+      result = Result.ok(dish: +"soup", items: [ +"a", { note: +"b" } ])
 
       assert_predicate result, :frozen?
       assert_predicate result.data, :frozen?
       assert_raises(FrozenError) { result.data[:dish] = "stew" }
+      assert_raises(FrozenError) { result.data[:dish] << "!" }
+      assert_raises(FrozenError) { result.data[:items] << "c" }
+      assert_raises(FrozenError) { result.data[:items][0] << "!" }
+      assert_raises(FrozenError) { result.data[:items][1][:note] << "!" }
     end
 
     test "pattern matches the ok branch" do
