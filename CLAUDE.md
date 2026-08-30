@@ -34,10 +34,9 @@ under 70 chars, no trailers.
 
 1. Three GitHub Apps on `uchoa-space` — `scotty`, `bones`, `kirk` (permissions in ADR 021),
    private keys under `~/.config/crew/<persona>.pem`, installed on the org.
-2. `gh repo create uchoa-space/rita --public --source . --push`.
-3. Branch protection on `main`: check `ci` + 1 approval, no force-push/deletion — only after
+2. Branch protection on `main`: check `ci` + 1 approval, no force-push/deletion — only after
    `bin/ci` (ADR 020) has run green once.
-4. Shell: `CREW_<PERSONA>_APP_ID` and `CREW_<PERSONA>_KEY` for the three personas.
+3. Shell: `CREW_<PERSONA>_APP_ID` and `CREW_<PERSONA>_KEY` for the three personas.
 
-When 1 and 4 exist, the `crew` skill moves to `gh` and the first PR runs scotty → bones → kirk.
+When 1 and 3 exist, the `crew` skill moves to `gh` and the first PR runs scotty → bones → kirk.
 Delete this section when `docs/owed.md` no longer lists the three ADR 021 lines.
