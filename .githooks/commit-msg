@@ -1,0 +1,36 @@
+#!/bin/sh
+# commit-msg hook: Conventional Commits, scope required, one line,
+# description < 80 chars, no trailers or sign-offs.
+# Enable with: git config core.hooksPath .githooks
+
+msg_file="$1"
+fail() { printf 'commit-msg: %s\n' "$1" >&2; exit 1; }
+
+# Drop comment lines; keep everything else verbatim.
+body=$(grep -v '^#' "$msg_file")
+
+# Skip merge/revert/fixup messages git generates itself.
+case "$body" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*) exit 0 ;;
+esac
+
+lines=$(printf '%s\n' "$body" | sed '/^[[:space:]]*$/d' | wc -l | tr -d ' ')
+[ "$lines" -eq 0 ] && fail "empty commit message"
+[ "$lines" -gt 1 ] && fail "one line only: no body, no bullets, no trailers"
+
+subject=$(printf '%s\n' "$body" | sed '/^[[:space:]]*$/d' | head -n 1)
+
+case "$subject" in
+  *[Cc]o-[Aa]uthored-[Bb]y*|*[Ss]igned-[Oo]ff-[Bb]y*|*Claude-Session*)
+    fail "no trailers or co-signatures" ;;
+esac
+
+printf '%s' "$subject" | grep -Eq \
+  '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)\([a-z0-9][a-z0-9._/-]*\)!?: [^ ].*$' \
+  || fail "expected '<type>(<scope>): <description>' with scope required — got: $subject"
+
+desc=${subject#*: }
+[ ${#desc} -ge 80 ] && fail "description must be under 80 chars (got ${#desc}): $desc"
+case "$desc" in *.) fail "description must not end with a period" ;; esac
+
+exit 0
