@@ -45,6 +45,8 @@ up, and what the empty and failed states are.
 - `::Thread` is Ruby core, so the model is `ChatThread`; the header entity stays `thread:`.
 - `Command Open` exists: without it `thread: :open` was a status nothing produced (`rita:verify`)
   and the empty state had no keyword-less command to offer.
+- The chat is stateless per turn: `Say` hands the ladder the current text and nothing else.
+  Refining a draft is `Post::Refine` with the thread as context (ADR 011), not a chat property.
 - Streaming for slice 1 is the Turbo Stream response to `Say`'s POST (two appends), the frame busy
   for the whole ladder; a Solid Cable broadcast enters at `ViewResolver.changes_after` when a job
   does. Not validated in a browser — by scope, tests are strings.

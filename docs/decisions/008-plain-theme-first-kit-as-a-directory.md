@@ -23,6 +23,13 @@ snippets into `data-*` rules, `source(none)`, zero class selectors in the output
 `tr '}' '\n' < kit.css | grep -c '^\.'` → 0), swapped by one `stylesheet_link_tag`, and audited
 at boot like the plain theme.
 
+The tokens are a contract, named once (2026-08-30, reconciled between `rita.css` and the Figma
+prototype — `docs/figma.yml`): `background`, `surface`, `primary`, `success`, `danger`, `muted`,
+each with its `on-` pair; `line` (stroke only); `user` (the tint of the user's turn — the role is
+still named in words, ADR 009); `focus`; and three non-colour tokens `space`, `radius`, `target`
+(44px). The code built first with `bg`/`accent`/`border` and a `0.5rem` radius; the Figma names are
+the ones kept, the rename is owed to the code, radius is 4 or 6.
+
 ## Consequences
 
 - `rita` is honest about being undesigned until a screen has earned a kit.
