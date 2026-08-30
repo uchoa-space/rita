@@ -1,0 +1,280 @@
+/* rita — the plain, classless theme (ADR 008).
+   Tokens on :root; a background never travels without its on- pair.
+   Rules are keyed to [data-*] attributes and elements only: zero class selectors.
+   prefers-reduced-motion is the last block. */
+
+:root {
+  --rita-bg: #ffffff;
+  --rita-on-bg: #1c1917;
+  --rita-surface: #f5f5f4;
+  --rita-on-surface: #1c1917;
+  --rita-muted: #e7e5e4;
+  --rita-on-muted: #44403c;
+  --rita-accent: #1d4ed8;
+  --rita-on-accent: #ffffff;
+  --rita-user: #e0e7ff;
+  --rita-on-user: #1e1b4b;
+  --rita-danger: #fee2e2;
+  --rita-on-danger: #991b1b;
+  --rita-border: #d6d3d1;
+  --rita-focus: #1d4ed8;
+  --rita-space: 1rem;
+  --rita-radius: 0.5rem;
+  --rita-measure: 70ch;
+  --rita-target: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rita-bg: #121212;
+    --rita-on-bg: #e7e5e4;
+    --rita-surface: #1f1f1f;
+    --rita-on-surface: #e7e5e4;
+    --rita-muted: #2a2a2a;
+    --rita-on-muted: #c9c5c1;
+    --rita-accent: #93c5fd;
+    --rita-on-accent: #0b1f3a;
+    --rita-user: #2b2d5c;
+    --rita-on-user: #e0e7ff;
+    --rita-danger: #4a1515;
+    --rita-on-danger: #fecaca;
+    --rita-border: #3f3f3f;
+    --rita-focus: #93c5fd;
+  }
+}
+
+/* elements */
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background: var(--rita-bg);
+  color: var(--rita-on-bg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 1.125rem; }
+h2 { font-size: 1rem; }
+
+p { margin: 0 0 calc(var(--rita-space) / 2); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--rita-focus);
+  outline-offset: 2px;
+}
+
+button, textarea {
+  font: inherit;
+}
+
+button {
+  min-height: var(--rita-target);
+  min-width: var(--rita-target);
+  padding: 0 var(--rita-space);
+  border: 1px solid var(--rita-border);
+  border-radius: var(--rita-radius);
+  background: var(--rita-accent);
+  color: var(--rita-on-accent);
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: var(--rita-target);
+  padding: calc(var(--rita-space) / 2);
+  border: 1px solid var(--rita-border);
+  border-radius: var(--rita-radius);
+  background: var(--rita-surface);
+  color: var(--rita-on-surface);
+  resize: vertical;
+}
+
+label {
+  display: block;
+  margin-bottom: calc(var(--rita-space) / 4);
+  color: var(--rita-on-bg);
+}
+
+/* layout */
+
+[data-component="masthead"] {
+  min-height: var(--rita-target);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--rita-space);
+  border-bottom: 1px solid var(--rita-border);
+  background: var(--rita-surface);
+  color: var(--rita-on-surface);
+}
+
+[data-component="brand"] {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--rita-target);
+}
+
+[data-component="screen"] {
+  padding: var(--rita-space);
+  max-width: 100%;
+}
+
+/* chat: one column, thread then composer then sections; two columns above 1024px (ADR 009) */
+
+[data-archetype="chat"] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--rita-space);
+}
+
+[data-region="conversation"] {
+  display: grid;
+  gap: var(--rita-space);
+  max-width: var(--rita-measure);
+  min-width: 0;
+}
+
+[data-region="context"] {
+  display: grid;
+  gap: var(--rita-space);
+  align-content: start;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  [data-archetype="chat"]:has([data-region="context"]) {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  }
+}
+
+/* thread */
+
+[data-component="thread"] ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--rita-space);
+}
+
+[data-component="message"] {
+  padding: var(--rita-space);
+  border-radius: var(--rita-radius);
+  background: var(--rita-surface);
+  color: var(--rita-on-surface);
+  overflow-wrap: anywhere;
+}
+
+[data-component="message"][data-role="user"] {
+  background: var(--rita-user);
+  color: var(--rita-on-user);
+  justify-self: end;
+  max-width: 85%;
+}
+
+[data-component="message"] [data-part="author"] {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: calc(var(--rita-space) / 4);
+}
+
+[data-component="message"] [data-part="meta"] {
+  font-size: 0.75rem;
+  margin-top: calc(var(--rita-space) / 2);
+}
+
+[data-component="sources"] {
+  margin-top: calc(var(--rita-space) / 2);
+  font-size: 0.875rem;
+}
+
+[data-component="sources"] ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+[data-component="typing"] {
+  display: none;
+}
+
+turbo-frame[busy] [data-component="typing"] {
+  display: block;
+  padding: calc(var(--rita-space) / 2) var(--rita-space);
+  color: var(--rita-on-bg);
+  animation: rita-pulse 1.2s ease-in-out infinite;
+}
+
+/* composer */
+
+[data-component="composer"] {
+  display: grid;
+  gap: calc(var(--rita-space) / 2);
+}
+
+[data-component="composer"] button {
+  justify-self: start;
+}
+
+/* actions, empty, failure, section */
+
+[data-component="actions"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--rita-space) / 2);
+}
+
+[data-component="empty"] {
+  padding: var(--rita-space);
+  border: 1px dashed var(--rita-border);
+  border-radius: var(--rita-radius);
+  background: var(--rita-surface);
+  color: var(--rita-on-surface);
+}
+
+[data-component="failure"] {
+  padding: calc(var(--rita-space) / 2) var(--rita-space);
+  border-radius: var(--rita-radius);
+  background: var(--rita-danger);
+  color: var(--rita-on-danger);
+}
+
+[data-component="section"] {
+  padding: var(--rita-space);
+  border: 1px solid var(--rita-border);
+  border-radius: var(--rita-radius);
+  background: var(--rita-surface);
+  color: var(--rita-on-surface);
+  overflow-x: auto;
+}
+
+[data-component="section"] h2 {
+  margin-bottom: calc(var(--rita-space) / 2);
+}
+
+@keyframes rita-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
