@@ -16,7 +16,8 @@ would be the one document in the corpus `rita` cannot read the way it reads ever
 One Markdown file per decision under `docs/decisions/`, three-digit numbering, the six sections
 above, at most ~40 lines. Every record carries a **Post seed** — Angle, Tension, Payoff or cost —
 written at decision time, when the tension is still felt. A record cites the file or commit that
-embodies it once one exists. Superseding writes a new record; the old one stays.
+embodies it once one exists. Superseding writes a new record; the old one stays. A record is amended in place only
+while no code depends on its text (ADR 019).
 
 ## Consequences
 

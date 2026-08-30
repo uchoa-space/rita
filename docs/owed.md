@@ -15,3 +15,8 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | Boot rules run inside the suite (verify, vocabulary, contrast, catalogue, once) | 016 | one test per rule |
 | Lighthouse pass on the happy `chat` screen, numbers in `perf.md` | 013 | the ledger has the row |
 | `Journal` sample domain in `test/support` replaced by real use cases as fixtures | 010 | the second real screen exists |
+| `corpus_state.embedder` id; bump `knowledge_version` on change | 019 | the column exists and ingest checks it |
+| `documents.retired_at`; ingest never deletes | 019 | a removed file leaves a retired row |
+| Dependency-rule test: `lib/rita/**` never references `app/` or `Chat::`/`Post::` | 019 | the test exists and passes |
+| Remove `capybara`, `selenium-webdriver`, `image_processing`, `kamal`, `thruster`, `tailwindcss-rails` — one change each | 019 | Gemfile carries only what an ADR asks for |
+| Mark pre-017 provisional code (`test/support/journal.rb`; drop the stopped Post stream's stash) | 017, 019 | markers present, stash gone |
