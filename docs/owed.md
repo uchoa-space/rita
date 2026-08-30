@@ -24,5 +24,4 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | `bin/ci` (audit, importmap audit, brakeman, rubocop, test) printing the ADR per step | 020 | the script exists and reviews cite it |
 | `.github/workflows/ci.yml` calls `bin/ci` only: pgvector image, informers cache, no system-test job, no libvips | 020 | first run on `origin/main` green |
 | Three GitHub Apps (`scotty`, `bones`, `kirk`) on `uchoa-space`, keys held by the Admiral | 021 | `gh api app` answers for each — **Admiral's gate** |
-| `main` protected in `uchoa-space/rita`: `ci` + 1 approval, no force-push/deletion (repo public since 6ac240e) | 020, 021 | settings page matches — **Admiral's gate** |
 | `crew` skill on `gh` + installation tokens; bones' skill refuses `APPROVE`; scotty's git identity | 021 | first PR opened by scotty, reviewed by bones, approved by kirk |
