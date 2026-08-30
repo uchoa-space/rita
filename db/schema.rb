@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_150000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -31,7 +31,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
     t.string "rungs_tried", default: [], null: false, array: true
     t.datetime "updated_at", null: false
     t.index ["knowledge_version", "question"], name: "index_answers_on_knowledge_version_and_question"
-    t.check_constraint "rung::text = ANY (ARRAY['0'::character varying, '1'::character varying, '2'::character varying, '3'::character varying, 'handoff'::character varying]::text[])", name: "answers_rung_check"
+    t.check_constraint "rung::text = ANY (ARRAY['0'::character varying::text, '1'::character varying::text, '2'::character varying::text, '3'::character varying::text, 'handoff'::character varying::text])", name: "answers_rung_check"
+  end
+
+  create_table "chat_threads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "status", default: "open", null: false
+    t.datetime "updated_at", null: false
+    t.check_constraint "status::text = ANY (ARRAY['open'::character varying, 'closed'::character varying]::text[])", name: "chat_threads_status_check"
   end
 
   create_table "chunks", force: :cascade do |t|
@@ -62,7 +69,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
     t.datetime "updated_at", null: false
     t.index ["path"], name: "index_documents_on_path", unique: true
     t.index ["project_id"], name: "index_documents_on_project_id"
-    t.check_constraint "kind::text = ANY (ARRAY['adr'::character varying, 'readme'::character varying, 'note'::character varying]::text[])", name: "documents_kind_check"
+    t.check_constraint "kind::text = ANY (ARRAY['adr'::character varying::text, 'readme'::character varying::text, 'note'::character varying::text])", name: "documents_kind_check"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "answer_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.string "failure_code"
+    t.string "failure_message"
+    t.string "role", null: false
+    t.bigint "thread_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_messages_on_answer_id"
+    t.index ["thread_id"], name: "index_messages_on_thread_id"
+    t.check_constraint "body IS NOT NULL OR failure_code IS NOT NULL", name: "messages_body_or_failure_check"
+    t.check_constraint "role::text = ANY (ARRAY['user'::character varying, 'assistant'::character varying]::text[])", name: "messages_role_check"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -74,4 +96,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
 
   add_foreign_key "chunks", "documents"
   add_foreign_key "documents", "projects"
+  add_foreign_key "messages", "answers"
+  add_foreign_key "messages", "chat_threads", column: "thread_id"
 end
