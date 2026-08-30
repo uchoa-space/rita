@@ -16,12 +16,15 @@ up, and what the empty and failed states are.
 - **Layout.** One column below 1024px: thread, composer, then the `Post` header and retrieved
   chunks as named sections beneath. Two columns above. *Reflow, never hide* — nothing carrying
   information is `display: none` at any width.
-- **Streaming.** Server-first: the assistant's message streams as Turbo Stream appends into its
-  frame; `turbo-frame[busy]` is the typing state — the documented exception to "no skeletons".
-  No optimistic echo, no cancel mid-stream.
+- **Streaming.** Server-first: the assistant's message arrives as a Turbo Stream append into
+  the thread frame — in slice 1 as the response to `Say`'s POST, the frame busy for the whole
+  ladder; a broadcast enters at `ViewResolver.changes_after` when a job does (ADR 013).
+  `turbo-frame[busy]` is the typing state — the documented exception to "no skeletons". No
+  optimistic echo, no cancel mid-stream.
 - **The draft is a message.** `rita` does not render MDX. A draft is an assistant message with a
-  `Draft` leaf: markdown rendered with raw HTML dropped and links `http(s)` only (ADR 014), with the actions the header derives — `Refine`, `Approve`,
-  `Publish`. The true render is the blog running `next dev` after publish.
+  `Draft` leaf: markdown rendered with raw HTML dropped and links `http(s)` only (ADR 014), with
+  the actions the header derives — `Approve`, `Publish`. The true render is the blog running
+  `next dev` after publish.
 - **Actions are absent, never disabled.** `Publish` exists only when `requires post: :approved`;
   `Approve` only when a draft exists. No greyed control without a stated reason.
 - **States.** Empty: the query's `intent` and one button per no-keyword command. Failed: the
@@ -44,8 +47,6 @@ up, and what the empty and failed states are.
 - **Stateless per turn.** `Say` hands the ladder the current text and nothing else; rung, USD
   and latency ride on the assistant message as a `meta` part. Refining a draft is `Post::Refine`
   with the thread as context (ADR 011), not a chat property; `Refine` is free text, not a button.
-- **Streaming for slice 1** is the Turbo Stream response to `Say`'s POST, the frame busy for the
-  whole ladder; a broadcast enters at `ViewResolver.changes_after` when a job does (ADR 013).
 - **Names the build settled.** `::Thread` is Ruby core, so the model is `ChatThread` (the header
   entity stays `thread:`); `Command Open` exists because `thread: :open` must be produced by
   something (`rita:verify`) and the empty state needs a keyword-less command; `Sources` is its
