@@ -15,3 +15,4 @@
 | [010](010-kernel-decisions-where-the-adrs-were-thin.md) | Kernel decisions taken where the `cuy` ADRs were thin |
 | [011](011-drafting-is-not-a-rung.md) | Drafting is not a rung — the ladder answers questions; the `Drafter` writes posts |
 | [012](012-events-over-notifications-answers-explain-themselves.md) | Events over `ActiveSupport::Notifications`; an `Answer` row explains its own handoff |
+| [013](013-performance-budgets-per-kind-of-turn.md) | Performance budgets per kind of turn; the draft is a job; nothing is optimised unmeasured |

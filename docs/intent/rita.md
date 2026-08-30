@@ -18,8 +18,9 @@
   READMEs with Notes). The `uchoa-space` blog (Next.js 16, Tailwind Plus Spotlight) is built and
   has zero posts. `rita` automates the cross-referencing and the drafting.
 - **Success:**
-  1. A chat request returns, in seconds, a coherent MDX draft that crosses its sources — e.g.
-     `spaces/013`, `spaces/010` and the `spaces/README.md` Notes for the branch-protection post.
+  1. A question answers in seconds; a draft request produces, in minutes and as a message while
+     the chat stays usable, a coherent MDX draft that crosses its sources — e.g. `spaces/013`,
+     `spaces/010` and the `spaces/README.md` Notes for the branch-protection post (budgets: ADR 013).
   2. Tone and sources are refined from the chat, not from a form.
   3. Publishing is one click and the blog renders it immediately (local `next dev`).
   4. Every generated answer carries its rung, cost in USD and latency.

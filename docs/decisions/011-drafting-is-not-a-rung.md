@@ -31,6 +31,8 @@ about.
   construction and is reported as such, not hidden in a cache-hit rate it can never affect.
 - Intent § success 2 ("refine tone or sources from the chat") is a `Post::Refine` command, not a
   property of the chat archetype. ADR 009 is amended accordingly.
+- The `Drafter` runs in a Solid Queue job and lands by broadcast; it is minutes, not seconds
+  (ADR 013).
 - Bad: two prompts to keep true, and a harness option (`max_tokens`) that exists for one caller.
 
 ## Post seed

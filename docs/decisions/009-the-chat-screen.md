@@ -55,7 +55,8 @@ up, and what the empty and failed states are.
 
 - `Thread`/`Say`/`Draft` are the first three leaves the vocabulary needs (ADR 004).
 - A markdown renderer is a new dependency (`commonmarker`), used only by the `Draft` leaf.
-- Bad: no cancel mid-stream means a long rung-3 answer is waited out. Accepted for one user.
+- Bad: no cancel mid-stream means a long rung-3 answer is waited out. Accepted for one user —
+  for questions only; a draft never runs inside a request (ADR 013).
 
 ## Post seed
 
