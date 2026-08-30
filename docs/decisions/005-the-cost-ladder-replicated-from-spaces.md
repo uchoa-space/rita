@@ -1,4 +1,4 @@
-# ADR 005: The cost ladder, replicated from `spaces` unchanged
+# ADR 005: The cost ladder, replicated from `spaces` with three named adaptations
 
 - **Status:** Accepted
 - **Date:** 2026-08-30
@@ -27,7 +27,22 @@ Rungs 2–3 accept an answer only if `cited ⊆ retrieved` (`spaces/015`). Model
 `config/initializers/llm.rb`, never in code, chosen against current pricing at implementation
 (`spaces/011`); API keys come from the environment; a missing key falls through to the next
 rung (`spaces/001`, `008`). No judge runs inside a request (`spaces/005`). Postgres 17 with
-pgvector is the only store (`spaces/002`). Every answer records rung, USD and latency.
+pgvector is the only store (`spaces/002`). Every answer records rung, USD and latency. The suite
+runs in one process (`spaces/009`: a forked worker dies on macOS the first time it touches the ONNX
+runtime).
+
+Three things differ because the corpus is a read-only file tree and the human is the user, not a
+moderator (reviewed against all 16 `spaces` records on 2026-08-30):
+
+1. **`knowledge_version` is corpus-wide**, bumped by `corpus:ingest`, not per space on every
+   post and comment. Questions cross projects, so a per-project version cannot key rungs 0–1.
+2. **Handoff is a chat message and writes an `Answer` row** (`rung: handoff`, the rungs tried,
+   latency). `spaces/007` paused a room for a person and wrote nothing, which it lists as a cost.
+   There is no pause-keyword rung; nobody is handed to.
+3. **`rake evals` is deferred, not dropped.** `spaces/014` is a decision because it was measured
+   (golden set in groups: repeats, paraphrases, novel, handoffs; τ swept on the paraphrase subset;
+   judge isolated per `spaces/005`). `rita` owes itself the same run before it calls the ladder
+   proven.
 
 ## Consequences
 
@@ -35,7 +50,9 @@ pgvector is the only store (`spaces/002`). Every answer records rung, USD and la
 - Generating a full MDX draft is a rung-3 job by nature; the ladder's value in `rita` is in
   the retrieval turns before it, and in refinement turns that hit the caches.
 - Bad: `spaces/014` was measured once under a rule changed the same afternoon and never
-  re-measured. `rita` inherits an unre-measured ladder and must measure it itself.
+  re-measured, and its own README says the ladder "absorbs only what repeats". The author's
+  requests are mostly novel: rungs 0–1 will fire rarely, and what transfers with certainty is
+  retrieval, `cited ⊆ retrieved`, and cost accounting per answer — not the cache hit rate.
 
 ## Post seed
 

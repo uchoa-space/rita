@@ -23,7 +23,7 @@
   2. Tone and sources are refined from the chat, not from a form.
   3. Publishing is one click and the blog renders it immediately (local `next dev`).
   4. Every generated answer carries its rung, cost in USD and latency.
-- **Constraint:** the ladder is replicated from `spaces/014` and `spaces/015`, unchanged. Everything
+- **Constraint:** the ladder is replicated from `spaces/014` and `spaces/015` (adaptations in ADR 005). Everything
   runs locally.
 - **Out of scope:** see § 5.
 
