@@ -22,3 +22,4 @@
 | [017](017-review-before-main.md) | Nothing lands on `main` unreviewed; the reviewer is another model; provisional code carries its trigger |
 | [018](018-the-header-is-the-api-doc.md) | The header is the API doc; comments cite the ADR; the README is for the five-minute reader |
 | [019](019-durable-and-derived-data-the-kernel-never-imports-the-app.md) | Durable and derived data are migrated differently; the kernel never imports the app; unused gems leave |
+| [020](020-the-gate-is-one-script.md) | The gate is one script — `bin/ci` locally now, the same steps in Actions when a remote exists; there is no CD |
