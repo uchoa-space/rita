@@ -16,3 +16,4 @@
 | [011](011-drafting-is-not-a-rung.md) | Drafting is not a rung — the ladder answers questions; the `Drafter` writes posts |
 | [012](012-events-over-notifications-answers-explain-themselves.md) | Events over `ActiveSupport::Notifications`; an `Answer` row explains its own handoff |
 | [013](013-performance-budgets-per-kind-of-turn.md) | Performance budgets per kind of turn; the draft is a job; nothing is optimised unmeasured |
+| [014](014-trust-boundaries-model-output-is-data.md) | Trust boundaries — model output is data, a slug is a path, a day has a budget, the app is local |

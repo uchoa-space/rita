@@ -19,7 +19,8 @@ A `Post` is a declarative header, the `UseCase` pattern applied to writing: `slu
 header plus retrieved chunks under the editorial rules above, and refined in the chat. The
 `Publish` command writes the MDX file straight into the blog repository and nowhere else;
 `requires post: :approved` guards it, and approval is a human action in the UI. `uchoa-space`
-is not modified beyond receiving files.
+is not modified beyond receiving files. The body is markdown, never MDX; the slug is validated
+as a path segment; the write is confined to the articles directory (ADR 014).
 
 ## Consequences
 

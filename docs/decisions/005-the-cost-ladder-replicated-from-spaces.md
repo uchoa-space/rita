@@ -51,6 +51,7 @@ which is the posture `spaces/015` arrived at after a prompt-injection finding; a
 on an `Answer` is the whole `ask` (embedding, retrieval, provider), not the model call alone.
 Drafting a post is not a rung at all — ADR 011.
 A rung that misses records why on the `Answer` row (`skips`), not in a log line — ADR 012.
+A question is capped in length and a day is capped in USD before any paid rung — ADR 014.
 
 ## Consequences
 

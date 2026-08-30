@@ -20,7 +20,7 @@ up, and what the empty and failed states are.
   frame; `turbo-frame[busy]` is the typing state — the documented exception to "no skeletons".
   No optimistic echo, no cancel mid-stream.
 - **The draft is a message.** `rita` does not render MDX. A draft is an assistant message with a
-  `Draft` leaf: markdown rendered, with the actions the header derives — `Refine`, `Approve`,
+  `Draft` leaf: markdown rendered with raw HTML dropped and links `http(s)` only (ADR 014), with the actions the header derives — `Refine`, `Approve`,
   `Publish`. The true render is the blog running `next dev` after publish.
 - **Actions are absent, never disabled.** `Publish` exists only when `requires post: :approved`;
   `Approve` only when a draft exists. No greyed control without a stated reason.
