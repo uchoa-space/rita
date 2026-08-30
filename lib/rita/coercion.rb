@@ -45,21 +45,23 @@ module Rita
 
     private
 
+    SCALARS = {
+      String => ->(v) { String(v) },
+      Integer => ->(v) { Integer(v, exception: true) },
+      Float => ->(v) { Float(v, exception: true) },
+      Symbol => ->(v) { v.to_s.to_sym },
+      Hash => ->(v) { v },
+      Array => ->(v) { v }
+    }.freeze
+
     def convert(name, type, value)
       @failed_argument = name
       return value if type.is_a?(Module) && value.is_a?(type)
 
-      case type
-      when String then String(value)
-      when Integer then Integer(value, exception: true)
-      when Float then Float(value, exception: true)
-      when Symbol then value.to_s.to_sym
-      when Hash, Array then value
-      else
-        if type.respond_to?(:call) then type.call(value)
-        elsif type.respond_to?(:rita_coerce) then type.rita_coerce(value)
-        else raise ArgumentError, "#{name}: #{type} cannot coerce #{value.inspect}"
-        end
+      if SCALARS.key?(type) then SCALARS[type].call(value)
+      elsif type.respond_to?(:call) then type.call(value)
+      elsif type.respond_to?(:rita_coerce) then type.rita_coerce(value)
+      else raise ArgumentError, "#{name}: #{type} cannot coerce #{value.inspect}"
       end
     end
   end

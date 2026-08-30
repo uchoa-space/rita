@@ -9,7 +9,11 @@ module Rita
     Defect = Struct.new(:use_case, :message)
 
     # archetype => the class that draws it. Empty until `chat` lands.
-    def self.archetypes = {}
+    class << self
+      attr_writer :archetypes
+
+      def archetypes = @archetypes ||= {}
+    end
 
     def self.verify_returns!(registry = Rita.registry)
       defects = registry.queries.filter_map do |query|
