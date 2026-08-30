@@ -16,7 +16,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
   enable_extension "vector"
 
   create_table "answers", force: :cascade do |t|
-    t.text "body", null: false
+    t.text "body"
     t.integer "cited_document_ids", default: [], null: false, array: true
     t.decimal "cost_usd", precision: 12, scale: 8, default: "0.0", null: false
     t.datetime "created_at", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
     t.text "question", null: false
     t.vector "question_embedding", limit: 384, null: false
     t.string "rung", null: false
+    t.string "rungs_tried", default: [], null: false, array: true
     t.datetime "updated_at", null: false
     t.index ["knowledge_version", "question"], name: "index_answers_on_knowledge_version_and_question"
     t.check_constraint "rung::text = ANY (ARRAY['0'::character varying, '1'::character varying, '2'::character varying, '3'::character varying, 'handoff'::character varying]::text[])", name: "answers_rung_check"
@@ -42,6 +43,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
     t.datetime "updated_at", null: false
     t.index ["document_id", "position"], name: "index_chunks_on_document_id_and_position", unique: true
     t.index ["document_id"], name: "index_chunks_on_document_id"
+  end
+
+  create_table "corpus_state", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "knowledge_version", default: 0, null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
@@ -60,7 +67,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_130100) do
 
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "knowledge_version", default: 0, null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_projects_on_name", unique: true

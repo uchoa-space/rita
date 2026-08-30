@@ -9,9 +9,10 @@ class DocumentTest < ActiveSupport::TestCase
     assert_not doc.valid?
   end
 
-  test "project knowledge_version sums the projects" do
-    Project.create!(name: "a", knowledge_version: 2)
-    Project.create!(name: "b", knowledge_version: 3)
-    assert_equal 5, Project.knowledge_version
+  test "corpus knowledge_version is one row, starts at 0 and bumps" do
+    assert_equal 0, Corpus.knowledge_version
+    assert_equal 1, Corpus::State.bump_knowledge_version!
+    assert_equal 1, Corpus.knowledge_version
+    assert_equal 1, Corpus::State.count
   end
 end

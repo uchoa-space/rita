@@ -6,6 +6,7 @@ namespace :corpus do
     report = Corpus::Ingest.call(root)
     elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - started
     puts "corpus: #{report.projects} projects, #{report.documents} documents, #{report.chunks} chunks"
-    puts "corpus: #{report.changed} projects bumped, #{report.removed} documents removed, #{elapsed.round(1)}s"
+    puts "corpus: #{report.changed} documents changed, #{report.removed} removed, " \
+         "knowledge_version #{report.knowledge_version}, #{elapsed.round(1)}s"
   end
 end

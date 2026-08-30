@@ -1,11 +1,11 @@
 # Walks a corpus root (`~/Documents/adr-harvest`): every `<project>/README.md` and
 # `<project>/NNN-*.md` / `NNNN-*.md` becomes one Document, chunked by `##` section and embedded
-# locally. Idempotent by sha: a re-run with nothing changed writes nothing; any change in a
-# project bumps its `knowledge_version`.
+# locally. Idempotent by sha: a re-run with nothing changed writes nothing; any change anywhere
+# bumps the corpus-wide `knowledge_version` once (ADR 005, adaptation 1).
 module Corpus
   class Ingest
     ADR_FILE = /\A\d{3,4}-.*\.md\z/
-    Report = Data.define(:projects, :documents, :chunks, :changed, :removed)
+    Report = Data.define(:projects, :documents, :chunks, :changed, :removed, :knowledge_version)
 
     def self.call(root) = new(root).call
 
@@ -15,26 +15,19 @@ module Corpus
 
     def call
       changed = 0
-      removed = 0
       seen = []
       project_dirs.each do |dir|
         project = Project.find_or_create_by!(name: dir.basename.to_s)
-        touched = false
         corpus_files(dir).each do |file|
           path = file.relative_path_from(@root).to_s
           seen << path
-          touched |= ingest_file(project, path, file.read)
-        end
-        stale = project.documents.where.not(path: seen)
-        removed += stale.count
-        touched |= stale.destroy_all.any?
-        if touched
-          project.bump_knowledge_version!
-          changed += 1
+          changed += 1 if ingest_file(project, path, file.read)
         end
       end
+      removed = Document.where.not(path: seen).destroy_all.size
+      State.bump_knowledge_version! if changed.positive? || removed.positive?
       Report.new(projects: Project.count, documents: Document.count, chunks: Chunk.count,
-                 changed: changed, removed: removed)
+                 changed: changed, removed: removed, knowledge_version: State.knowledge_version)
     end
 
     private

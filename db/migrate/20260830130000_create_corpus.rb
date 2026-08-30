@@ -2,10 +2,15 @@ class CreateCorpus < ActiveRecord::Migration[8.1]
   def change
     create_table :projects do |t|
       t.string :name, null: false
-      t.integer :knowledge_version, null: false, default: 0
       t.timestamps
     end
     add_index :projects, :name, unique: true
+
+    # One row: the corpus-wide knowledge_version rungs 0-1 key on (ADR 005, adaptation 1).
+    create_table :corpus_state do |t|
+      t.integer :knowledge_version, null: false, default: 0
+      t.timestamps
+    end
 
     create_table :documents do |t|
       t.references :project, null: false, foreign_key: true
