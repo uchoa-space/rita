@@ -137,6 +137,9 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    informers (1.3.0)
+      onnxruntime (>= 0.9)
+      tokenizers (>= 0.6)
     io-console (0.9.2)
     irb (1.18.0)
       pp (>= 0.6.0)
@@ -176,6 +179,8 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.4)
+    neighbor (1.2.0)
+      activerecord (>= 7.2)
     net-imap (0.6.6)
       date
       net-protocol
@@ -207,6 +212,16 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-musl)
       racc (~> 1.4)
+    onnxruntime (0.11.6)
+      ffi
+    onnxruntime (0.11.6-aarch64-linux)
+      ffi
+    onnxruntime (0.11.6-arm64-darwin)
+      ffi
+    onnxruntime (0.11.6-x86_64-darwin)
+      ffi
+    onnxruntime (0.11.6-x86_64-linux)
+      ffi
     ostruct (0.6.3)
     parallel (2.1.0)
     parser (3.3.12.0)
@@ -219,6 +234,13 @@ GEM
     pg (1.6.3-x86_64-darwin)
     pg (1.6.3-x86_64-linux)
     pg (1.6.3-x86_64-linux-musl)
+    phlex (2.4.1)
+      refract (~> 1.0)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.4.0)
+      phlex (~> 2.4.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
@@ -272,6 +294,9 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
+    rake-compiler-dock (1.12.0)
+    rb_sys (0.9.130)
+      rake-compiler-dock (= 1.12.0)
     rbs (4.2.0)
       logger
       prism (>= 1.6.0)
@@ -281,6 +306,9 @@ GEM
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
+    refract (1.1.0)
+      prism
+      zeitwerk
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
@@ -367,6 +395,14 @@ GEM
     thruster (0.1.26-x86_64-darwin)
     thruster (0.1.26-x86_64-linux)
     timeout (0.6.1)
+    tokenizers (0.7.0)
+      rb_sys
+    tokenizers (0.7.0-aarch64-linux)
+    tokenizers (0.7.0-aarch64-linux-musl)
+    tokenizers (0.7.0-arm64-darwin)
+    tokenizers (0.7.0-x86_64-darwin)
+    tokenizers (0.7.0-x86_64-linux)
+    tokenizers (0.7.0-x86_64-linux-musl)
     tsort (0.2.0)
     turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
@@ -411,8 +447,11 @@ DEPENDENCIES
   debug
   image_processing (~> 1.2)
   importmap-rails
+  informers (~> 1.3)
   kamal
+  neighbor (~> 1.2)
   pg (~> 1.1)
+  phlex-rails (~> 2.4)
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.3, >= 8.1.3.1)
@@ -478,6 +517,7 @@ CHECKSUMS
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   image_processing (1.14.0) sha256=754cc169c9c262980889bec6bfd325ed1dafad34f85242b5a07b60af004742fb
   importmap-rails (2.2.3) sha256=7101be2a4dc97cf1558fb8f573a718404c5f6bcfe94f304bf1f39e444feeb16a
+  informers (1.3.0) sha256=7d8ea9f6c32ecd4519ccbf8b2d89e9ecfa7c7916700020926c21926d6506de83
   io-console (0.9.2) sha256=efa74f891dd03c0939a931dfc6e74c2813d904763d456ea9762b0525e748db08
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
@@ -493,6 +533,7 @@ CHECKSUMS
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
   msgpack (1.8.4) sha256=4411c22d350dd1c20250f7eada3cca2695438c2f769cf0782f0cd065d90a3e7b
+  neighbor (1.2.0) sha256=29c4a6881ab7287c605cc252f72cd8d24546780e9e85efbea878362881e28196
   net-imap (0.6.6) sha256=96aa4ee50df3060203e649efc341f53480b791d49e150f2fdebf68beb141a8df
   net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
   net-protocol (0.3.0) sha256=ba310c3d4f1cad46bb1ab20336b06669b1ff8f7c568d9cb9342b32a718547472
@@ -509,6 +550,11 @@ CHECKSUMS
   nokogiri (1.19.4-x86_64-darwin) sha256=7fd17057d3e1f00e9954a74b3cd76595d3d4a5ef233b7ed9599047c204f70551
   nokogiri (1.19.4-x86_64-linux-gnu) sha256=379fae440b28915e3f19d752ce2dcf8465ed2b2fbefd2a7ca0dd497bc981a06a
   nokogiri (1.19.4-x86_64-linux-musl) sha256=17dfb7c1fa194ae02fbf7c51a7afc8d278045ab3fdacfd86f91d02d7b274470b
+  onnxruntime (0.11.6) sha256=f7b4cee36e99d287735fc2782afc2155da35c5b3007bbac936c295c3b6813c78
+  onnxruntime (0.11.6-aarch64-linux) sha256=98fbe830d2c94dbbff2873310483793b5c7b2d8b378b2e285c66090b44d4d290
+  onnxruntime (0.11.6-arm64-darwin) sha256=0a2efa32d7533e96b242e2b01af2520ac8421d4f042c4b9f9b3aaff3f0fc10cf
+  onnxruntime (0.11.6-x86_64-darwin) sha256=f70de6177887e6134ce6c8da3c484920a15be9eff060346ecdfb8199e8763dcc
+  onnxruntime (0.11.6-x86_64-linux) sha256=3421f205610e7bcb193f0064468aa6d143269f79f7c06edb5b27b32df0ed58dd
   ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
@@ -519,6 +565,8 @@ CHECKSUMS
   pg (1.6.3-x86_64-darwin) sha256=ee2e04a17c0627225054ffeb43e31a95be9d7e93abda2737ea3ce4a62f2729d6
   pg (1.6.3-x86_64-linux) sha256=5d9e188c8f7a0295d162b7b88a768d8452a899977d44f3274d1946d67920ae8d
   pg (1.6.3-x86_64-linux-musl) sha256=9c9c90d98c72f78eb04c0f55e9618fe55d1512128e411035fe229ff427864009
+  phlex (2.4.1) sha256=e596717fbfe38b5271840266758779ebe75092e02629f0c170287e6290a70b12
+  phlex-rails (2.4.0) sha256=2bcddbd488681acb25753bab1887d3ac150e644244ff8ba307f2171a4d0195f5
   pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
@@ -537,8 +585,11 @@ CHECKSUMS
   railties (8.1.3.1) sha256=2388a232579a00cefea4487de66c8553c3408c1300abdc6cf1799d86ffb04487
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
+  rake-compiler-dock (1.12.0) sha256=f13205c2738f3d2053afcd03491a9e4541b22a59a0bfc53fc8bc883bd8188023
+  rb_sys (0.9.130) sha256=7d486d99c1da02635515deaf9860fc5aea90bb4ab2589b2deec7fdc7d3548615
   rbs (4.2.0) sha256=51f7b886dcc05bc09e10b901daa6a81829f6adc03101d6ca9ea4aac6103e0674
   rdoc (8.0.0) sha256=03bf8c08a9639658855a0cfd77c0abca8325c227693f7f33f82957811348c469
+  refract (1.1.0) sha256=ee3b9627e39f7692831101e2fedd73e0d09a592ff5d5c05f171d14211fc7a9c7
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
@@ -572,6 +623,13 @@ CHECKSUMS
   thruster (0.1.26-x86_64-darwin) sha256=c7f7f0cbefd8030ea03bf88f6a988f595a0618a35a1a0d358e729c6898eb5b6a
   thruster (0.1.26-x86_64-linux) sha256=3117a6ee430663f845a0457699fe9a05232dcc6c396e2cc83504de5a223c60e8
   timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
+  tokenizers (0.7.0) sha256=9c2160d1c314fe224ebcf5a0bfd54951b9138681aa30cf3df900abf570ba1869
+  tokenizers (0.7.0-aarch64-linux) sha256=c7cc43f4144d02e8db3a7d743725e38144f357d3f225373ef3a732869b057b2e
+  tokenizers (0.7.0-aarch64-linux-musl) sha256=f8b38535be37a044d7b119a65b2966b09c5493fdfd6eaf850b0f3c4f37fd81fa
+  tokenizers (0.7.0-arm64-darwin) sha256=a54883b2fe7ca83a9275284a30edeb12376a1fe1af6b9be6bf9693ef202eac82
+  tokenizers (0.7.0-x86_64-darwin) sha256=e67366c1d35e34b6fa406b1fbb528411fe229c5f12cdf05fc7f68269dcc1b8ea
+  tokenizers (0.7.0-x86_64-linux) sha256=a795e5026ccf6f6340195789c48ff8c9c26462c75feb3b2971e26aef3118d842
+  tokenizers (0.7.0-x86_64-linux-musl) sha256=c2409219bb97772ae3117671d62d5c021a5db9cf7212b3cf09a15a7cc8828989
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   turbo-rails (2.0.23) sha256=ee0d90733aafff056cf51ff11e803d65e43cae258cc55f6492020ec1f9f9315f
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
