@@ -13,3 +13,4 @@
 | [008](008-plain-theme-first-kit-as-a-directory.md) | A plain, classless theme first; a kit is a directory that may come later |
 | [009](009-the-chat-screen.md) | The `chat` screen — one column first, server-first streaming, the draft is a message |
 | [010](010-kernel-decisions-where-the-adrs-were-thin.md) | Kernel decisions taken where the `cuy` ADRs were thin |
+| [011](011-drafting-is-not-a-rung.md) | Drafting is not a rung — the ladder answers questions; the `Drafter` writes posts |
