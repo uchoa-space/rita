@@ -33,6 +33,7 @@ module Rita
     def commands = select(&:command?)
     def queries = select(&:query?)
     def namespaces = filter_map(&:namespace).uniq
+    def commands_in(namespace) = commands.select { |cmd| cmd.namespace == namespace&.to_sym }
 
     # `registry[:"notes/write"]`, `registry["notes/write"]` or `registry[Notes::Write]`.
     def [](key)

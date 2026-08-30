@@ -27,7 +27,7 @@ module Rita
     class << self
       def inherited(subclass)
         super
-        Rita.registry.register(subclass) if subclass.name.present?
+        Rita.registry.register(subclass) if subclass.name.present? && !subclass.name.start_with?("Rita::")
       end
 
       def kind = :use_case
@@ -121,6 +121,15 @@ module Rita
         return @path = custom.to_s.freeze if custom
 
         @path || derive_path
+      end
+
+      # The path with every `:<entity>_id` filled from the entities given; a segment with
+      # nothing to fill stays as it is.
+      def path_for(**entities)
+        path.gsub(/:(\w+)_id/) do
+          entity = entities[Regexp.last_match(1).to_sym]
+          entity.respond_to?(:id) ? entity.id.to_s : Regexp.last_match(0)
+        end
       end
 
       def key = name ? name.underscore.to_sym : :anonymous
