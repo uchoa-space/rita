@@ -23,4 +23,7 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | First review by bones cites no path under `adr-harvest/`, `freeze/`, `spaces/` | intent self-contained | the review file or PR review reads clean |
 | `bin/ci` (audit, importmap audit, brakeman, rubocop, test) printing the ADR per step | 020 | the script exists and reviews cite it |
 | `.github/workflows/ci.yml` calls `bin/ci` only: pgvector image, informers cache, no system-test job, no libvips | 020 | first run on `origin/main` green |
-| `crew` skill on `gh` + installation tokens; bones' skill refuses `APPROVE`; scotty's git identity | 021 | first PR opened by scotty, reviewed by bones, approved by kirk |
+| scotty opens a PR under its App identity | 021 | first PR authored by enterprise-scotty[bot] |
+| Dependabot PRs cannot be brought up to date by a persona: `@dependabot rebase\|recreate` needs push access, `gh pr update-branch` poisons the branch and no App has `workflows` permission; the Admiral rebases by hand per PR | 021 | ADR amendment picks: kirk App gains push + `workflows`, or Dependabot bumps stay Admiral-rebased |
+| `enterprise-bones` App has Contents write; ADR 021 says read | 021 | permission page shows read-only |
+| `image_processing` still in Gemfile; Active Storage loads `image_processing/vips` at boot | 019 | issue #5 closed, gem gone, `bin/ci` green |
