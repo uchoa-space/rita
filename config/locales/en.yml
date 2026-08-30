@@ -1,31 +1,26 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  rita:
+    title: "Rita"
+    failure: "Could not:"
+    chat:
+      thread: "Conversation"
+      typing: "Rita is answering…"
+      send: "Send"
+      say: "Say something"
+      start: "Start"
+      sources: "Sources"
+      roles:
+        user: "You"
+        assistant: "Rita"
+        system: "System"
+      meta:
+        rung: "rung %{rung}"
+        cost: "$%{usd}"
+        latency: "%{ms} ms"
+  errors:
+    domain:
+      handoff: "No reliable context in the corpus for that — try naming the project or the decision."
+      blank: "Say something first."
+      guard_failed: "%{entity} is not %{status}."
+      invalid_argument: "%{argument} was not understood."
+      missing_argument: "Something was missing from the request."
