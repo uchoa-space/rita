@@ -22,3 +22,6 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | Mark pre-017 provisional code (`test/support/journal.rb`; drop the stopped Post stream's stash) | 017, 019 | markers present, stash gone |
 | `bin/ci` (audit, importmap audit, brakeman, rubocop, test) printing the ADR per step | 020 | the script exists and reviews cite it |
 | `.github/workflows/ci.yml` calls `bin/ci` only: pgvector image, informers cache, no system-test job, no libvips | 020 | the file matches; runs once a remote exists |
+| Three GitHub Apps (`scotty`, `bones`, `kirk`) on `uchoa-space`, keys held by the Admiral | 021 | `gh api app` answers for each — **Admiral's gate** |
+| `rita` public in `uchoa-space`; `main` protected: `ci` + 1 approval, no force-push/deletion | 020, 021 | settings page matches — **Admiral's gate** |
+| `crew` skill on `gh` + installation tokens; bones' skill refuses `APPROVE`; scotty's git identity | 021 | first PR opened by scotty, reviewed by bones, approved by kirk |
