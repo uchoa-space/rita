@@ -60,7 +60,8 @@ up, and what the empty and failed states are.
   Refining a draft is `Post::Refine` with the thread as context (ADR 011), not a chat property.
 - Streaming for slice 1 is the Turbo Stream response to `Say`'s POST (two appends), the frame busy
   for the whole ladder; a Solid Cable broadcast enters at `ViewResolver.changes_after` when a job
-  does. Not validated in a browser — by scope, tests are strings.
+  does. Not validated in a browser by the suite; the Lighthouse pass of ADR 013/016 is where it is
+  seen.
 
 ## Consequences
 

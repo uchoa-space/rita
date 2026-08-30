@@ -34,7 +34,7 @@ Diverged on purpose:
 
 ## Consequences
 
-- The kernel is 14 files and 44 tests; `rita:explain` and `rita:verify` run green on an empty app.
+- The kernel is `lib/rita/` at `c139d16`; `rita:explain` and `rita:verify` run green on an empty app.
 - Each divergence is one line to reverse; each is here so it is not re-decided by accident.
 - `Rita::Command`/`Rita::Query` no longer self-register (they produced phantom `/rita/command`
   routes); only named subclasses do.
