@@ -24,7 +24,10 @@ as a path segment; the write is confined to the articles directory (ADR 014).
 
 ## Consequences
 
-- The blog stays a static Next.js site with no knowledge of `rita`; the coupling is a path.
+- The blog stays a static Next.js site with no knowledge of `rita`; the coupling is a path and
+  a file shape. The MDX template lives in one file and a fixture copied from a real article in
+  the blog is the contract a test pins; when the blog's `ArticleLayout` changes, the fixture is
+  re-copied and the test says what moved.
 - The `Post` board's columns (Seed → Drafting → Published) are the `requires`/`leaves` graph of
   three commands, not a status enum designed for the screen.
 - Bad: "write a file into another repo" has no rollback but `git` in that repo. Acceptable

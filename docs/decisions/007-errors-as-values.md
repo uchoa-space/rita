@@ -32,8 +32,7 @@ body is the smell.
   domain rejection. The distinction survives all the way to the screen.
 - Every branch a screen can show is enumerable from the body's `failure(:code)` calls, so the
   four states are testable against HTML strings (ADR 003). A code without an `errors.domain.*`
-  entry falls back to the result's message today; failing at boot needs a scan of the bodies and
-  is owed, not built (2026-08-30).
+  entry falls back to the result's message today; failing at boot is decided in ADR 015.
 - Cost: every write path constructs and propagates a `Result` by hand — more lines per use
   case than exception unwinding, in exchange for the guarantee.
 

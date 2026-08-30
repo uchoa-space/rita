@@ -17,3 +17,4 @@
 | [012](012-events-over-notifications-answers-explain-themselves.md) | Events over `ActiveSupport::Notifications`; an `Answer` row explains its own handoff |
 | [013](013-performance-budgets-per-kind-of-turn.md) | Performance budgets per kind of turn; the draft is a job; nothing is optimised unmeasured |
 | [014](014-trust-boundaries-model-output-is-data.md) | Trust boundaries — model output is data, a slug is a path, a day has a budget, the app is local |
+| [015](015-once-in-the-header-one-failure-vocabulary.md) | Commands are unsafe to retry unless the header says `once:`; one failure vocabulary, one status per class |

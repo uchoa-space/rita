@@ -30,7 +30,7 @@ Diverged on purpose:
   namespace.
 - `DispatchController` rendered JSON with forgery protection skipped for one afternoon; since
   `14f7673` queries draw their archetype, commands answer a Turbo Stream or a 303, forgery
-  protection is on, and JSON remains only for a query whose archetype is not drawn yet.
+  protection is on. The JSON fallback for an undrawn archetype was removed by ADR 015.
 
 ## Consequences
 
