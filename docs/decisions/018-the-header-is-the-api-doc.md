@@ -35,7 +35,8 @@ before `main`), and where to record a new decision. It cites ADRs; it does not r
 
 **The docs map** is fixed: `docs/intent/` (what and why), `docs/decisions/` (why this way),
 `docs/screens.md` (the vocabulary), `docs/figma.yml` (leaf → Figma node), `docs/perf.md`
-(measurements), `docs/owed.md` (debts), `docs/reviews/` (history). A new document goes in one of
+(measurements), `docs/owed.md` (debts), `docs/reviews/` (history), `docs/walkthrough/` (frames and
+videos of the prototype). A new document goes in one of
 these or gets an ADR saying why not.
 
 ## Consequences
