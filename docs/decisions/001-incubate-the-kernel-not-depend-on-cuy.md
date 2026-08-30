@@ -18,7 +18,7 @@ code.
 The kernel is rewritten inside `rita`, from the ADRs in `adr-harvest/cuy/`, as `lib/rita/`.
 The frozen source is reference material when an ADR is too thin to implement from — never a
 dependency, never a copy-paste base. Where the code is consulted, the gap in the ADR is recorded
-as a `rita` decision. Extracting a gem is out of scope; it is a decision for after the kernel
+as a `rita` decision, and the consultation is named in the diff where it happened (ADR 017). Extracting a gem is out of scope; it is a decision for after the kernel
 has drawn every `rita` screen.
 
 ## Consequences

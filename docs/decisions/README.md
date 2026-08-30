@@ -19,3 +19,4 @@
 | [014](014-trust-boundaries-model-output-is-data.md) | Trust boundaries — model output is data, a slug is a path, a day has a budget, the app is local |
 | [015](015-once-in-the-header-one-failure-vocabulary.md) | Commands are unsafe to retry unless the header says `once:`; one failure vocabulary, one status per class |
 | [016](016-tests-are-strings-seeds-are-commands.md) | Tests are strings, seeds are commands, the registry drives the screen tests |
+| [017](017-review-before-main.md) | Nothing lands on `main` unreviewed; the reviewer is another model; provisional code carries its trigger |
