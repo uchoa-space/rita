@@ -26,6 +26,7 @@ average alone:
 | question, model rung (3) | p95 ≤ 10 s |
 | draft (ADR 011) | minutes; not a request — see below |
 | page (`GET /chat/…`) | server time p95 ≤ 100 ms; HTML ≤ 50 KB; CSS ≤ 20 KB; 0 image bytes; 0 font bytes (system sans stack); 0 JS beyond the importmap |
+| Core Web Vitals, on the happy `chat` screen | LCP ≤ 1.0 s (local), INP ≤ 200 ms, CLS ≤ 0.1 across every state transition — measured by Lighthouse, several runs, the way `cuy/0015` found its contrast bug; the numbers go in `docs/perf.md` |
 
 **The draft is a job.** `Post::Draft` enqueues on Solid Queue and returns at once; the assistant
 message appears with the frame busy, and the finished draft arrives by Turbo Stream broadcast over

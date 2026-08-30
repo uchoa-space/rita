@@ -27,6 +27,17 @@ up, and what the empty and failed states are.
 - **States.** Empty: the query's `intent` and one button per no-keyword command. Failed: the
   `failure(:code)` rendered as a message where the reader is — handoff included — never a toast.
   Loading: the typing indicator. Happy: the thread.
+- **Transitions do not shift.** A state's slot has the height of what replaces it: the typing
+  indicator is one message tall, the empty state is one message plus its buttons, the sidebar's
+  "no header yet" section is the height of a header. Appends land at the bottom of the log and
+  move nothing above them. (CLS — reviewed 2026-08-30.)
+- **The acknowledgement of Send is client-side.** Turbo sets `turbo-frame[busy]` before any
+  response and the theme draws the typing state from that attribute alone; the user's text stays
+  in the composer until `turbo:submit-end`. That is the next paint after the tap, and it is a CSS
+  rule — never a server round-trip. (INP.)
+- **Append per message, never per token.** `role="log" aria-live="polite"` announces each append;
+  a token stream would announce hundreds of fragments and reflow the log on each. A question's
+  answer and a draft (ADR 013) each arrive as one append.
 - **Obligations.** Thread is `role="log"` `aria-live="polite"`; every message named by its role;
   composer labelled; focus returns to the composer after send; roles never told apart by colour
   alone; every action keyboard-reachable; 44px targets on the phone shape.
