@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   # Every registered use case: queries on GET, commands on POST, all to Rita::DispatchController.
   Rita::Routes.draw(self)
+
+  # The conversation is the root (ADR 009): the thread query with no thread given.
+  root to: "rita/dispatch#call", defaults: { rita_key: "chat/thread" }
 end
