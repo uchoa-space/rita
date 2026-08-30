@@ -3,7 +3,7 @@
 module Rita
   # `Rita.run` and `Rita.registry`. Extended onto the Rita module by the initializer,
   # which is also what loads this file before the first use case is defined.
-  module Kernel
+  module Seam
     def registry
       @registry ||= Registry.new
     end
@@ -15,5 +15,5 @@ module Rita
     end
   end
 
-  extend Kernel
+  extend Seam
 end
