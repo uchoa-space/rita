@@ -29,12 +29,3 @@ only where an ADR is thin, say so in the diff (`# after freeze/cuy …`), never 
 Write `docs/decisions/NNN-slug.md` in the format of ADR 000 (with a Post seed), add it to the
 index, and add any admitted debt to `docs/owed.md`. Commits: one line, Conventional Commits,
 under 70 chars, no trailers.
-
-## Admiral's gates still open (ADR 021 — remind the author, never do these)
-
-1. Three GitHub Apps on `uchoa-space` — `scotty`, `bones`, `kirk` (permissions in ADR 021),
-   private keys under `~/.config/crew/<persona>.pem`, installed on the org.
-2. Shell: `CREW_<PERSONA>_APP_ID` and `CREW_<PERSONA>_KEY` for the three personas.
-
-When 1 and 2 exist, the `crew` skill moves to `gh` and the first PR runs scotty → bones → kirk.
-Delete this section when `docs/owed.md` no longer lists the two ADR 021 lines.

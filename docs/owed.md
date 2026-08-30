@@ -23,5 +23,4 @@ Every debt an ADR admits, one line each. A change that pays a line deletes it.
 | First review by bones cites no path under `adr-harvest/`, `freeze/`, `spaces/` | intent self-contained | the review file or PR review reads clean |
 | `bin/ci` (audit, importmap audit, brakeman, rubocop, test) printing the ADR per step | 020 | the script exists and reviews cite it |
 | `.github/workflows/ci.yml` calls `bin/ci` only: pgvector image, informers cache, no system-test job, no libvips | 020 | first run on `origin/main` green |
-| Three GitHub Apps (`scotty`, `bones`, `kirk`) on `uchoa-space`, keys held by the Admiral | 021 | `gh api app` answers for each — **Admiral's gate** |
 | `crew` skill on `gh` + installation tokens; bones' skill refuses `APPROVE`; scotty's git identity | 021 | first PR opened by scotty, reviewed by bones, approved by kirk |
