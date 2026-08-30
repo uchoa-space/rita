@@ -15,7 +15,8 @@ harmful as utility classes in app code.
 
 ## Decision
 
-Views are Phlex components from a closed leaf vocabulary under `lib/rita/leaves/`. No `class:`
+Views are Phlex components from a closed leaf vocabulary under `app/components/rita/leaves/`
+(built 2026-08-30; archetypes beside them under `app/components/rita/archetypes/`). No `class:`
 attribute and no raw HTML tag in `app/`; a leaf that does not exist is added to the vocabulary
 with a record, not worked around. The theme is one compiled stylesheet keyed by
 `[data-component]`/`[data-state]`, built with Tailwind `@apply` from a single source. Contrast

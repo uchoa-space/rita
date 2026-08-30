@@ -33,6 +33,22 @@ up, and what the empty and failed states are.
 - **Slice 1 is `chat` alone.** `board`, `list`/`detail`, `report` wait until the conversation has
   produced a real draft.
 
+## Decided on the way (2026-08-30, from the build and the Figma prototype)
+
+- Rung, USD and latency are a `meta` part of the assistant's `Message` — per-answer traceability
+  (intent § success 4) lives on the chat surface, not only on the Costs `report`.
+- `Refine` is free text in the composer; a button for it is sugar the Figma prototype drew and
+  the code does not need.
+- Before a `Post` header exists the sidebar section shows dashes and one sentence, never hides.
+- `Sources` is its own leaf in code (Figma drew it as a `Message` part); typing is the `Thread`'s
+  busy state in code (Figma drew it as a `Message` variant). The Figma sidecar records both.
+- `::Thread` is Ruby core, so the model is `ChatThread`; the header entity stays `thread:`.
+- `Command Open` exists: without it `thread: :open` was a status nothing produced (`rita:verify`)
+  and the empty state had no keyword-less command to offer.
+- Streaming for slice 1 is the Turbo Stream response to `Say`'s POST (two appends), the frame busy
+  for the whole ladder; a Solid Cable broadcast enters at `ViewResolver.changes_after` when a job
+  does. Not validated in a browser — by scope, tests are strings.
+
 ## Consequences
 
 - `Thread`/`Say`/`Draft` are the first three leaves the vocabulary needs (ADR 004).

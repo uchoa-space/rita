@@ -31,8 +31,9 @@ body is the smell.
 - A raise inside a job is diagnostically a bug (retry, stays pending) — never confused with a
   domain rejection. The distinction survives all the way to the screen.
 - Every branch a screen can show is enumerable from the body's `failure(:code)` calls, so the
-  four states are testable against HTML strings (ADR 003); a code without an
-  `errors.domain.*` entry fails at boot, not as a blank toast.
+  four states are testable against HTML strings (ADR 003). A code without an `errors.domain.*`
+  entry falls back to the result's message today; failing at boot needs a scan of the bodies and
+  is owed, not built (2026-08-30).
 - Cost: every write path constructs and propagates a `Result` by hand — more lines per use
   case than exception unwinding, in exchange for the guarantee.
 

@@ -28,15 +28,16 @@ Diverged on purpose:
 - Commands answer POST only.
 - The run/registry seam is `Rita::Seam` — `Rita::Kernel` would shadow `::Kernel` inside the
   namespace.
-- `DispatchController` renders JSON (200 `result.to_h`, 422, 404) with forgery protection skipped —
-  provisional until `ViewResolver` draws archetypes (ADR 003).
+- `DispatchController` rendered JSON with forgery protection skipped for one afternoon; since
+  `14f7673` queries draw their archetype, commands answer a Turbo Stream or a 303, forgery
+  protection is on, and JSON remains only for a query whose archetype is not drawn yet.
 
 ## Consequences
 
 - The kernel is 14 files and 44 tests; `rita:explain` and `rita:verify` run green on an empty app.
 - Each divergence is one line to reverse; each is here so it is not re-decided by accident.
-- Bad: the JSON dispatcher and the skipped forgery check are debt with a named owner: the `chat`
-  stream replaces them.
+- `Rita::Command`/`Rita::Query` no longer self-register (they produced phantom `/rita/command`
+  routes); only named subclasses do.
 
 ## Post seed
 

@@ -1,0 +1,31 @@
+# Design-system map (claude-skills/0009): each leaf to its Figma node. Node ids are stable across
+# publishes; this file changes only when a leaf or a variant is added or renamed.
+file: https://www.figma.com/design/kMr6gPisw08d2IJ2Y8CxGP
+page: chat            # id 0:1
+tokens:
+  collection: VariableCollectionId:1:2   # color/rita-*, space/*, radius/*; modes light 1:0, dark 1:1
+leaves:
+  Layout:   { node: null, note: "not drawn; the frames are the layout" }
+  Thread:   { node: "3:4",  props: { messages: slot } }
+  Message:  { node: "2:45", props: { role: [user, assistant], part: [none, sources, failure, typing] },
+              note: "code: typing is Thread busy state, Sources is its own leaf, meta part not drawn" }
+  Sources:  { node: "2:45", note: "drawn as Message part=sources" }
+  Composer: { node: "3:6",  props: { value: text } }
+  Actions:  { node: "3:23", props: { state: [draft, approved] } }
+  Section:  { node: "3:41", props: { kind: [post-header, retrieved-chunks] } }
+  Empty:    { node: "3:42", props: { intent: text } }
+  Failure:  { node: "2:7",  props: { code: text, message: text } }
+support:
+  Button:   { node: "2:6",  props: { tone: [primary, plain], label: text } }
+screens:
+  chat/empty/1280: "5:51"
+  chat/loading/1280: "5:93"
+  chat/failed/1280: "5:143"
+  chat/happy/1280: "4:11"
+  chat/happy/1280/dark: "7:301"
+  chat/empty/390: "6:191"
+  chat/loading/390: "6:233"
+  chat/failed/390: "6:283"
+  chat/happy/390: "5:192"
+  vocabulary: "7:291"
+  a11y-note: "7:292"
