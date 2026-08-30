@@ -30,6 +30,19 @@ derives one renderer, the screen, and takes no position on MCP, mail, chat trans
 - Bad: a command that does not fit the vocabulary has no hatch but `renders :custom, because:`
   (ADR 003); the first one that appears is a signal, not a nuisance.
 
+### Tension to watch
+
+`Rita.run` is coerce → `requires` → call → `returns` → `leaves` today, and ADR 012, 014 and 015
+each add a step before `call`. The rot is a 150-line method with `if command?` at every stage.
+The guard: each stage is one object with one interface (`call(use_case, args, result) → result`),
+the stages are one array declared in one place, and `rita:explain` prints that array. A new stage
+is an item in the list, never an `if` in the middle.
+
+The header will grow by accumulation — `once:` (ADR 015) is the eighth word, and `yada` already
+asked for `hands_off_to:` and `reacts_to:`. A word is cheap to add and impossible to remove. The
+rule is `cuy`'s N ≥ 2: a word enters when two real commands need it, never for one; `rita:explain`
+counts the uses of each word, and a word used once is a finding.
+
 ## Post seed
 
 - **Angle:** a naming collision (CQS vs CQRS) that forces you to say out loud what you are

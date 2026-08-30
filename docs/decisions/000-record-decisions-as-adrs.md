@@ -25,6 +25,14 @@ embodies it once one exists. Superseding writes a new record; the old one stays.
   is the honest state and is updated, not invented.
 - Bad: nothing enforces that a decision gets a file. The discipline is the author's.
 
+### Tension to watch
+
+Seventeen records in one day is the pace of writing, not of deciding. Too many ADRs become
+doctrine nobody consults, and the next decision is taken in code with no one recalling that 015
+already said otherwise. The guard: every rule `rita:explain` and `rita:verify` check prints the
+ADR that created it beside the result. Doctrine the code cites survives; doctrine that lives only
+in `docs/` does not.
+
 ## Post seed
 
 - **Angle:** a tool for writing about decisions has to record its own decisions in the format it

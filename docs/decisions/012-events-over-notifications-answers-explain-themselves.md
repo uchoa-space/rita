@@ -52,6 +52,14 @@ never built there.
 - Bad: one more column, one subscriber, one boot check to keep true — and a rule (no value in a
   payload) that only review enforces.
 
+### Tension to watch
+
+`answers` has fourteen columns, gains `skips` here, is written by drafts (ADR 011), read for
+p95 (ADR 013) and summed for the daily ceiling (ADR 014); `post_id`, `thread_id`, `kind` are next
+in line. `Answer` is the cost ledger — one row per paid or cached call — and nothing else. Whoever
+needs to tie an answer to a message or a post points *at* it (`messages.answer_id`, as today),
+never the other way round.
+
 ## Post seed
 
 - **Angle:** the observability design a framework wrote and never built, built first by the app

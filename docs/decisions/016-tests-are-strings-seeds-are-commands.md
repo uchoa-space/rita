@@ -56,6 +56,13 @@ no Selenium, no headless driver in the Gemfile.
 - Bad: the first `Seed.reach` for `post: :published` will run `Publish` against the tmp blog
   root — which is exactly the test the file write needs.
 
+### Tension to watch
+
+Five reasons for boot to fail on a Saturday morning — contrast, the `errors.domain` catalogue,
+`verify_returns!`, `once:` warnings, the graph — and the first `unless Rails.env.test?` around
+one of them is the beginning of the end. The rule above is the guard: the checks run in the suite;
+at boot they `warn`, except a header `DefinitionError`, which is a bug and fails.
+
 ## Post seed
 
 - **Angle:** letting the state graph, not the test author, decide what a test is allowed to set

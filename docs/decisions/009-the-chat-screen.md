@@ -62,6 +62,15 @@ up, and what the empty and failed states are.
 - Bad: no cancel mid-stream means a long rung-3 answer is waited out. Accepted for one user —
   for questions only; a draft never runs inside a request (ADR 013).
 
+### Tension to watch
+
+`Say` is twenty lines and everything will want to live in it: spotting `spaces/013` in the text
+to offer a seed, telling a question from a draft request, refining with context, commands typed
+as prose. The rot is one giant `case` that parses intent. The guard is the doctrine already here:
+`Say` writes the question and asks the ladder, nothing else; any "what did the user mean" is
+another command with its own header, offered as an `Actions` button that is present or absent.
+"Absent, never disabled" is also the antidote to an intent parser.
+
 ## Post seed
 
 - **Angle:** designing a chat as a server-rendered archetype in 2026, against every client-side

@@ -35,6 +35,14 @@ about.
   (ADR 013).
 - Bad: two prompts to keep true, and a harness option (`max_tokens`) that exists for one caller.
 
+### Tension to watch
+
+Someone will "unify" the two paths into an `Llm::Call` with nine options (`json:`, `max_tokens:`,
+`cite:`, `context:`, …). The harness (`Llm::Client#complete`) is the only shared thing; `Prompt`
+and `Drafter::Prompt` are two files that do not import each other. A harness parameter only one
+caller uses — the `max_tokens` the first attempt reached for — is the sign the boundary is
+leaking.
+
 ## Post seed
 
 - **Angle:** the moment a cost ladder copied verbatim meets the one request it was never

@@ -31,6 +31,17 @@ message/composer anatomy from assistant-ui's MIT CSS as `@apply` source.
 - Bad: every new visual need is a vocabulary change with a record. That is the cost being
   bought on purpose; the escape hatch (`renders :custom`) is counted, not free.
 
+### Tension to watch
+
+The first new screen will ask for "just a `compact:` on `Message`", then `tone:`, then a
+`variant:` that is `class:` in disguise; the static check only catches `class:` and
+`**attributes`. The guard: a leaf has at most the axes the Figma component has (`role`, `part`,
+`kind`, `state`, `tone`) — `docs/figma.yml` is the limit, and a keyword outside the sidecar is a
+diff. An escape is declared and counted, like `renders :custom`. The theme has the same failure
+in CSS: four-attribute selectors and a specificity war. One leaf, one block, in vocabulary order;
+`rita:vocabulary` checks that every `data-component` has exactly one block, and ADR 013's 20 KB
+is the brake.
+
 ## Post seed
 
 - **Angle:** keeping Tailwind and banning Tailwind classes in the same repository — the

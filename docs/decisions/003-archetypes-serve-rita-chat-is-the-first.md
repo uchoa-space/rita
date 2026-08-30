@@ -39,6 +39,13 @@ against rendered HTML, never a browser (`cuy/0007`).
 - Bad: `chat` is designed against one screen. It may generalize badly; that is the intended
   price of "one real screen" over a roadmap.
 
+### Tension to watch
+
+`ViewResolver` already has `resolve`, `changes_after`, `landing_path`, `verify_returns!`; `board`
+will ask for a drag hook and `report` for a period. The guard: an archetype reads only `returns`
+(its `reads`) and the registry. A parameter that is not in the header is a new header word
+(ADR 002's N ≥ 2 rule), never a hook on the resolver.
+
 ## Post seed
 
 - **Angle:** the archetype that sat in a drafts folder for nine days because no screen had
